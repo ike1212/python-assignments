@@ -22,7 +22,7 @@ filename = os.path.join(directory, 'RedOrBlue.jpg')
 img = plt.imread(filename)  # This method results in an immutable ndarray of image data.
 
 img_b = np.array(Image.open(filename))  # see *1 This method results in a writable ndarray.
-
+img_c = np.array(Image.open(filename))
 ###
 # Make two rectangles of yellow pixels
 ###
@@ -41,5 +41,6 @@ fig, ax = plt.subplots(1, 2)
 # Show the image data in the first subplot
 ax[0].imshow(img, interpolation='none')
 ax[1].imshow(img_b, interpolation='none')
+ax[2].imshow(img_c, interpolation='none')
 # Show the figure on the screen
 fig.show()
