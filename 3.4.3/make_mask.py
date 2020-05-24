@@ -3,6 +3,7 @@ import numpy as np
 import PIL
 
 
+
 def make_mask(rows, columns, stripe_width):
     """An example mask generator
     Makes slanted stripes of width stripe_width

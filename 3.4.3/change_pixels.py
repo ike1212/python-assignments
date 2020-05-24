@@ -21,7 +21,7 @@ filename = os.path.join(directory, 'RedOrBlue.jpg')
 # Read the image data into an array
 img = plt.imread(filename)  # This method results in an immutable ndarray of image data.
 
-img_b = np.array(Image.open(filename))  # see *1 This method results in a writable ndarray.
+img_b = np.array(Image.open(filename))# see *1 This method results in a writable ndarray.
 img_c = np.array(Image.open(filename))
 ###
 # Make two rectangles of yellow pixels
@@ -31,13 +31,25 @@ width = len(img_b[0])
 for row in range(75, 85):
     for column in chain(range(176, 196), range(208, 228)):
         img_b[row][column] = [255, 255, 0]  # red + green = yellow
+height = len(img_c)
+width = len(img_c[0])
+for row in range(30, 145):
+    for column in chain(range(165, 230)):
+        img_c[row][column] = [0, 255, 0]
+height = len(img_c)
+width = len(img_c[0])
+for row in range(20, 134):
+    for column in range(width):
+        if sum(img_c[row][column]) > 400: #(max brightness is 3*255=765)
+            img_c[row][column]=[255,0,255] # R + B = magenta
+
 
 ###
 # Show the image data
 ###
 
 # Create figure with 2 subplots
-fig, ax = plt.subplots(1, 2)
+fig, ax = plt.subplots(1, 3)
 # Show the image data in the first subplot
 ax[0].imshow(img, interpolation='none')
 ax[1].imshow(img_b, interpolation='none')
